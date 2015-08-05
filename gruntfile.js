@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 
     watch: {
       options: {
-        livereload: true,
+        livereload: true
       },
 
       sass: {
@@ -17,6 +17,11 @@ module.exports = function (grunt) {
       js: {
         files: ['public/assets/js/source/**/*.js', 'public/bower_components/**/jquery.min.js'],
         tasks: ['uglify:dev']
+      },
+
+      images: {
+        files: ['public/assets/images/src/*'],
+        tasks: ['responsive_images:dist']
       }
     },
 
@@ -81,12 +86,54 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+
+    responsive_images: {
+      dist: {
+        options: {
+          engine : 'im',
+          sizes: [
+          {
+            name: "xs",
+            width: 320,
+            quality: 80
+          },{
+            name: "xs_2x",
+            width: 640,
+            quality: 60
+          },{
+            name: "sm",
+            width: 700,
+            quality: 80
+          },{
+            name: "sm_2x",
+            width: 1400,
+            quality: 60
+          },{
+            name: 'lg',
+            width: '50%',
+            height: '50%',
+            quality: 70
+          },{
+            name: "lg",
+            width: '100%',
+            suffix: "_x2",
+            quality: 60
+          }]
+        },
+        files: [{
+          expand: true,
+          src: ['**/*.{jpg,gif,png}'],
+          cwd: 'public/assets/images/src/',
+          dest: 'public/assets/images/dist/'
+        }]
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('css-mqpacker');
+  grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('bootstrap-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-postcss');
