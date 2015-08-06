@@ -103,11 +103,11 @@ module.exports = function (grunt) {
             quality: 60
           },{
             name: "sm",
-            width: 700,
+            width: 768,
             quality: 80
           },{
             name: "sm_2x",
-            width: 1400,
+            width: 1536,
             quality: 60
           },{
             name: 'lg',
