@@ -1,7 +1,7 @@
 {
-  "name": "coup",
-  "version": "1.0.0",
-  "description": "A coup clone",
+  "name": "grunt-project",
+  "version": "1.0.1",
+  "description": "Basic Grunt File Config",
   "main": "gruntfile.js",
   "dependencies": {
     "grunt": "~0.4.5",
